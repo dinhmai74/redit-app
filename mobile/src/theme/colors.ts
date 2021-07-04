@@ -32,3 +32,35 @@ export const colors = {
 
   iconBackgroundDark: tokens.colorBlueDarker,
 }
+
+export const darkColors = {
+  ...colors,
+  transparent: "transparent",
+  body: tokens.colorWhite,
+  white: tokens.colorWhite,
+  backgroundRegular: palette["blue-800"],
+  backgroundSubdued: tokens.colorSkyLighter,
+
+  text: palette["grey-50"],
+  textBlue: tokens.colorBlueDark,
+  textSubscription: palette["grey-700"],
+  textGrey: palette["grey-500"],
+
+  label: palette["grey-500"],
+  border: palette["grey-400"],
+
+  foregroundRegular: tokens.colorBlack,
+  foregroundOff: tokens.colorInkLight,
+  foregroundSubdued: tokens.colorInkLightest,
+  foregroundContrasting: tokens.colorWhite,
+  foregroundSuccess: tokens.colorGreenDark,
+
+  highlightPrimary: tokens.colorIndigo,
+  highlightPrimaryDisabled: tokens.colorIndigoLight,
+
+  buttonBackgroundPlain: tokens.colorSky,
+  btnBackgroundTransparent: "rgba(0,0,0,0.6)",
+  errorPrimary: tokens.colorRed,
+
+  iconBackgroundDark: tokens.colorBlueDarker,
+}

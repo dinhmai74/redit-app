@@ -1,7 +1,7 @@
 import tokens from "@shopify/polaris-tokens"
 import { createTheme, useTheme } from "@shopify/restyle"
 import { TextStyle } from "react-native"
-import { colors } from "./colors"
+import { colors, darkColors } from "./colors"
 import { fontSize, typography } from "./typography"
 
 const pxToNumber = (px: string) => {
@@ -163,4 +163,9 @@ export type Theme = typeof theme
 export type Color = keyof typeof colors
 export const useAppTheme = () => useTheme<Theme>()
 export default theme
-export { theme }
+const darkTheme: Theme = {
+  ...theme,
+  colors: darkColors,
+}
+const lightTheme = theme
+export { theme, darkTheme, lightTheme }
