@@ -1,12 +1,12 @@
-export const palette={
-  "black": "#1d1d1d",
-  "white": "#ffffff",
-  "offWhite": "#e6e6e6",
-  "orange": "#FBA928",
-  "orangeDarker": "#EB9918",
-  "lightGrey": "#9CA3AF",
-  "lighterGrey": "#CDD4DA",
-  "angry": "#dd3333",
+export const palette = {
+  black: "#1d1d1d",
+  white: "#ffffff",
+  offWhite: "#e6e6e6",
+  orange: "#FBA928",
+  orangeDarker: "#EB9918",
+  lightGrey: "#9CA3AF",
+  lighterGrey: "#CDD4DA",
+  angry: "#dd3333",
   "grey-50": "#FFFFFF",
   "grey-100": "#FFFFFF",
   "grey-200": "#FCFCFD",
@@ -137,5 +137,5 @@ export const palette={
   "blush-600": "#bc3757",
   "blush-700": "#942940",
   "blush-800": "#691d2a",
-  "blush-900": "#3f1217"
+  "blush-900": "#3f1217",
 }

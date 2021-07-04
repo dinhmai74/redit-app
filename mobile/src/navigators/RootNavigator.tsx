@@ -1,18 +1,16 @@
-import React from 'react';
-import {
-  NavigationContainer,
-  NavigationContainerRef,
-} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
-import Welcome from 'screens/welcome/Welcome';
-const Stack = createStackNavigator();
+import React from "react"
+import { NavigationContainer, NavigationContainerRef } from "@react-navigation/native"
+import { createStackNavigator } from "@react-navigation/stack"
+import Welcome from "screens/welcome/Welcome"
+const Stack = createStackNavigator()
 
 const RootStack = () => {
   return (
     <Stack.Navigator
       screenOptions={{
         headerShown: false,
-      }}>
+      }}
+    >
       <Stack.Screen
         name="authStack"
         component={Welcome}
@@ -21,8 +19,8 @@ const RootStack = () => {
         }}
       />
     </Stack.Navigator>
-  );
-};
+  )
+}
 
 export const RootNavigator = React.forwardRef<
   NavigationContainerRef,
@@ -32,7 +30,7 @@ export const RootNavigator = React.forwardRef<
     <NavigationContainer {...props} ref={ref}>
       <RootStack />
     </NavigationContainer>
-  );
-});
+  )
+})
 
-RootNavigator.displayName = 'RootNavigator';
+RootNavigator.displayName = "RootNavigator"

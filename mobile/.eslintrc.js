@@ -1,34 +1,10 @@
 module.exports = {
   root: true,
   parser: "@typescript-eslint/parser",
-  extends: "@react-native-community",
+  extends: ["@react-native-community", "prettier"],
   plugins: ["@typescript-eslint", "prettier", "react", "react-native"],
-  parserOptions: {
-    ecmaFeatures: {
-      jsx: true,
-    },
-    project: "./tsconfig.json",
-  },
-  settings: {
-    react: {
-      pragma: "React",
-      version: "detect",
-    },
-  },
-  globals: {
-    __DEV__: false,
-    jasmine: false,
-    beforeAll: false,
-    afterAll: false,
-    beforeEach: false,
-    afterEach: false,
-    test: false,
-    expect: false,
-    describe: false,
-    jest: false,
-    it: false,
-  },
   rules: {
+    "prettier/prettier": "error",
     "@typescript-eslint/ban-ts-ignore": 0,
     "@typescript-eslint/explicit-function-return-type": 0,
     "@typescript-eslint/explicit-member-accessibility": 0,
