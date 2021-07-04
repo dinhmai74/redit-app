@@ -1,0 +1,61 @@
+{
+  "common": {
+    "ok": "OK!",
+    "cancel": "Cancel",
+    "back": "Back",
+    "and": "and",
+    "or": "Or"
+  },
+  "errors": {
+    "invalidEmail": "Invalid email address."
+  },
+  "welcomeScreen": {
+    "poweredBy": "POWERED BY IGNITE",
+    "readyForLaunch": "Ready for launch.",
+    "continue": "CONTINUE",
+    "signUpWithGg": "Sign up with Google",
+    "signUpWithApple": "Sign up with Apple",
+    "signUpWithEmail": "Sign up with Email",
+    "alreadyHaveAccount": "Already have a Redditor? **bold**Log in**bold**"
+  },
+  "auth": {
+    "byContinueYouAgreeToOur": "By continuing, you agree to our ",
+    "userAgreement": "User Agreement",
+    "privacyPolicy": "Privacy Policy",
+    "password": "Password",
+    "signUp": "Sign up",
+    "logout": "Log out",
+    "forgotPassword": "Forgot password?",
+    "requiredUsername": "You must enter the user name!",
+    "requiredPassword": "You must enter the password!"
+  },
+
+  "signInScreen": {
+    "continue": "Continue",
+    "userName": "Username",
+    "password": "Password",
+    "newToReddit": "New to Reddit",
+    "loginToRedit": "Log in to Reddit",
+    "signInWithGg": "Continue with Google",
+    "signInWithApple": "Continue with Apple"
+  },
+  "demoScreen": {
+    "howTo": "HOW TO",
+    "title": "What’s In This Stack?",
+    "tagLine": "Congratulations, you’ve got a very advanced React Native app template here.  Take advantage of this boilerplate!",
+    "reactotron": "Demo Reactotron",
+    "demoList": "Demo List",
+    "androidReactotronHint": "If this doesn't work, ensure the Reactotron desktop app is running, run adb reverse tcp:9090 tcp:9090 from your terminal, and reload the app.",
+    "iosReactotronHint": "If this doesn't work, ensure the Reactotron desktop app is running and reload app.",
+    "macosReactotronHint": "If this doesn't work, ensure the Reactotron desktop app is running and reload app.",
+    "webReactotronHint": "If this doesn't work, ensure the Reactotron desktop app is running and reload app.",
+    "windowsReactotronHint": "If this doesn't work, ensure the Reactotron desktop app is running and reload app."
+  },
+  "demoListScreen": {
+    "title": "Demo List"
+  },
+  "storybook": {
+    "placeholder": "Placeholder",
+    "field": "Field"
+  }
+}
