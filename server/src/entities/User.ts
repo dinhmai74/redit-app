@@ -4,12 +4,19 @@ import { AppBaseEntity } from './AppBaseEntity'
 
 @ObjectType()
 @Entity()
-export class Post extends AppBaseEntity {
+export class User extends AppBaseEntity {
   @Field(() => Int)
   @PrimaryGeneratedColumn()
   id: string
 
   @Field()
-  @Column({ type: 'text' })
-  title!: string
+  @Column({ unique: true })
+  username!: string
+
+  @Field()
+  @Column({ type: 'text', unique: true, nullable: true })
+  email?: string
+
+  @Column()
+  password!: string
 }

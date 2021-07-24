@@ -23,5 +23,5 @@
     }
   },
   "exclude": ["node_modules"],
-  "include": ["index.js", "src", "test", "storybook"]
+  "include": ["index.js", "src", "test", "storybook", "setupJest.ts"]
 }

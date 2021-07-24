@@ -1,14 +1,20 @@
 import 'reflect-metadata'
-require('dotenv').config()
-import { ApolloServer } from 'apollo-server-express'
+import dotenv from 'dotenv'
+dotenv.config()
+import { ApolloError, ApolloServer } from 'apollo-server-express'
 import cors from 'cors'
 import express from 'express'
 import path from 'path'
-import { HelloResolver } from './resolvers/Hello'
 import { buildSchema } from 'type-graphql'
 import { createConnection } from 'typeorm'
 import { Post } from './entities/Post'
+import { User } from './entities/User'
+import { HelloResolver } from './resolvers/Hello'
 import { PostResolver } from './resolvers/Post'
+import { UserResolver } from './resolvers/User'
+import { logger, morganMiddleware } from './utils/winston'
+import { getErrorCode } from './utils/getError'
+import { errorNames } from './constants/ErrorCode'
 
 const main = async () => {
   await createConnection({
@@ -18,10 +24,11 @@ const main = async () => {
     logging: true,
     // synchronize: true,
     migrations: [path.join(__dirname, './migrations/*')],
-    entities: [Post],
+    entities: [Post, User],
   })
 
   const app = express()
+  app.use(morganMiddleware)
 
   // const RedisStore = connectRedisya(session)
   // const redis = new Redis(process.env.REDIS_URL)
@@ -50,35 +57,36 @@ const main = async () => {
     next()
   })
 
-  // app.use(
-  //   session({
-  //     name: COOKIE_NAME,
-  //     store: new RedisStore({
-  //       client: redis,
-  //       disableTouch: true,
-  //     }),
-  //     cookie: {
-  //       maxAge: 1000 * 60 * 60 * 24 * 365 * 10, // 10 years
-  //       httpOnly: true,
-  //       sameSite: 'lax', // csrf
-  //       secure: __prod__, // cookie only works in https
-  //       domain: __prod__ ? '.codeponder.com' : undefined,
-  //     },
-  //     saveUninitialized: false,
-  //     secret: process.env.SESSION_SECRET,
-  //     resave: false,
-  //   }),
-  // )
-
   const apolloServer = new ApolloServer({
     schema: await buildSchema({
-      resolvers: [HelloResolver, PostResolver],
+      resolvers: [HelloResolver, PostResolver, UserResolver],
       validate: false,
     }),
     context: ({ req, res }) => ({
       req,
       res,
     }),
+    formatError: (err: any) => {
+      const error = err as ApolloError
+      const returnError = getErrorCode(err.message)
+
+      if (returnError) {
+        logger.error({
+          label: `Error ${returnError.statusCode}`,
+          message: returnError?.logMessage || returnError?.message,
+        })
+        return {
+          message: returnError?.logMessage || returnError?.message || errorNames.SERVER_ERROR,
+          statusCode: returnError?.statusCode || 500,
+        }
+      } else
+        logger.error({
+          label: `Error ${error?.extensions?.code}`,
+          message: JSON.stringify(error),
+        })
+
+      return { ...error, statusCode: error?.extensions?.code }
+    },
   })
 
   apolloServer.applyMiddleware({ app, cors: { credentials: true, origin: true } })
@@ -88,10 +96,13 @@ const main = async () => {
   })
 
   app.listen(process.env.PORT, () => {
-    console.log(`server started on http://localhost:${process.env.PORT}/graphql`)
+    logger.http({
+      label: 'Server started on',
+      message: `http://localhost:${process.env.PORT}/graphql`,
+    })
   })
 }
 
 main().catch((err) => {
-  console.error(err)
+  logger.error(err.toString())
 })

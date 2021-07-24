@@ -1,0 +1,16 @@
+{
+  "tabs": [
+    {
+      "cd": "cd server",
+      "commands": [
+        "start-iterm-workspace"
+      ]
+    },
+    {
+      "cd": "cd mobile",
+      "commands": [
+        "rn"
+      ]
+    }
+  ]
+}

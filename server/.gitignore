@@ -3,3 +3,4 @@
 /dists
 /dist
 .env
+/logs

@@ -1,5 +1,5 @@
-import { persist, StateStorage } from "zustand/middleware"
 import AsyncStorage from "@react-native-async-storage/async-storage"
+import { StateStorage } from "zustand/middleware"
 
 // Custom storage object
 export const storage: StateStorage = {

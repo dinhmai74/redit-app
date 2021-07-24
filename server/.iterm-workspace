@@ -1,0 +1,9 @@
+{
+  "tabs": [
+    {
+      "commands": [
+        ["yarn watch", "yarn server"]
+      ]
+    }
+  ]
+}
